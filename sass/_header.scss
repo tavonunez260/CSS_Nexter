@@ -4,12 +4,18 @@
     background-image: linear-gradient(rgba($color-secondary, .5), rgba($color-secondary, .5)), url(../img/hero.jpeg);
     background-size: cover;
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
     grid-row-gap: 1.5rem;
     justify-content: center;
     align-content: center;
     padding: 8rem;
+    @media only screen and (max-width: $bp-md) {
+        grid-column: 1 / -1;
+    }
+    @media only screen and (max-width: $bp-xs) {
+        padding: 5rem;
+    }
     &__logo {
         height: 3rem;
         justify-self: center;
@@ -29,18 +35,21 @@
         }
     }
     &__seenon-logos {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        // display: grid;
-        // grid-template-columns: repeat(4, 1fr);
-        // grid-column-gap: 4rem;
-        // justify-items: center;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: center;
+        // align-items: center;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 4rem;
+        justify-items: center;
          img {
-            height: 2.5rem;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            max-height: 2.5rem;
+            max-width: 100%;
+            // display: block;
+            // margin-right: 2rem;
+            // margin-left: 2rem;
+            // margin-bottom: 2rem;
             filter: brightness(70%);
          }
     }
